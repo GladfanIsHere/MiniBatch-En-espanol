@@ -1,2 +1,2 @@
-# MiniBatch
-A game inspired by Minicraft and Minicraft Plus, made in batch
+# MiniBatch en Español
+Un juego inspirado en Minicraft y Minicraft Plus, creado en Batch
