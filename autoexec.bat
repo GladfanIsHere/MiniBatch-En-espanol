@@ -4,43 +4,43 @@ cd %~dp0
 cd stats
 >nul find "sword1" sword.txt && (
   set fight=1 >nul
-  set swordtype=Wooden Sword
+  set swordtype=Espada de madera
 ) || (
   >nul find "sword2" sword.txt && (
   set fight=2 >nul
-  set swordtype=Iron Sword
+  set swordtype=Espada de hierro
 ) || (
     >nul find "sword3" sword.txt && (
   set fight=3 >nul
-  set swordtype=Diamond Sword
+  set swordtype=Espada de diamante
 )
 )
 )
 >nul find "pick1" pick.txt && (
   set mine=1 >nul
-  set picktype=Wooden Pick
+  set picktype=Pico de madera
 ) || (
   >nul find "pick2" pick.txt && (
   set mine=2 >nul
-  set picktype=Iron Pick
+  set picktype=Pico de hierro
 ) || (
     >nul find "pick3" pick.txt && (
   set mine=3 >nul
-  set picktype=Diamond Pick
+  set picktype=Pico de diamante
 )
 )
 )
 >nul find "axe1" axe.txt && (
   set chop=1 >nul
-  set axetype=Wooden Axe
+  set axetype=Hacha de madera
 ) || (
   >nul find "axe2" axe.txt && (
   set chop=2 >nul
-  set axetype=Iron Axe
+  set axetype=Hacha de hierro
 ) || (
     >nul find "axe3" axe.txt && (
   set chop=3 >nul
-  set axetype=Diamond Axe
+  set axetype=Hacha de diamante
 )
 )
 )
