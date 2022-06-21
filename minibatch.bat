@@ -2,24 +2,24 @@
 title MiniBatch
 SETLOCAL EnableDelayedExpansion
 cd %~dp0
-echo Welcome back in MiniBatch Alpha v0.1.9!
-echo This versions fixes all bugs of the last version, v0.1.3, to provide you the best experience possible!
-echo Sword: %swordtype%
-echo Pick: %picktype%
-echo Axe: %axetype%
-echo Health: %health%
+echo Bienvenido devuelta a MiniBatch Alpha v0.1.9!
+echo Esta version arregla todos los bugs de la version anterior, v0.1.3, para darte la mejor experiencia posible!
+echo Espada: %swordtype%
+echo Pico: %picktype%
+echo Hacha: %axetype%
+echo Vida: %health%
 timeout /t 2 /nobreak >nul
-echo Press any key to continue
+echo Pulsa cualquier tecla para continuar
 pause >nul
 goto main
 
 :main
 color 07
 cls
-echo 1. Go mine
-echo 2. Go fight
-echo 3. Go chop
-choice /c 123 /m "What do you want to do?"
+echo 1. Ir a minar
+echo 2. Ir a pelear
+echo 3. Ir a talar
+choice /c 123 /m "Que quieres hacer?"
 if %errorlevel% equ 1 (
     goto mine
 )
@@ -41,26 +41,26 @@ if %mine% equ 3 (
     set /a minelootdiamond=%random% %%101
 )
 cls
-echo Mining.
+echo Minando.
 timeout /t 1 /nobreak >nul
 cls
-echo Mining..
+echo Minando..
 timeout /t 1 /nobreak >nul
 cls
-echo Mining...
+echo Minando...
 timeout /t 1 /nobreak >nul
 cls
 if %mine% equ 1 (
-    echo You mined %minelootiron% Iron ores with your %picktype%
+    echo Has minado %minelootiron% Menas de hierro con tu %picktype%
 )
 if %mine% equ 2 (
-    echo You mined %minelootdiamond% Diamond ores with your %picktype%
+    echo Has minado %minelootdiamond% Menas de diamante con tu %picktype%
 )
 if %mine% equ 3 (
-    echo You mined %minelootdiamond% Diamond ores with your %picktype%
+    echo Has minado %minelootdiamond% Menas de diamante con tu %picktype%
 )
 timeout /t 2 /nobreak >nul
-echo Press any key to continue
+echo Pulsa cualquier tecla para continuar
 pause >nul
 set /a currentallminelootiron=%allminelootiron%+%minelootiron%
 set /a allminelootiron=%currentallminelootiron%
@@ -90,55 +90,55 @@ if %fight% equ 3 (
     set /a damage=%random% %%3
 )
 cls
-echo Fighting.
+echo Peleando.
 timeout /t 1 /nobreak >nul
 cls
-echo Fighting..
+echo Peleando..
 timeout /t 1 /nobreak >nul
 cls
-echo Fighting...
+echo Peleando...
 timeout /t 1 /nobreak >nul
 cls
-echo You fought some monsters with your %swordtype% and got:
-echo %fightlootskeleton% bones from a skeleton
-echo %fightlootzombie% rotten flesh from a zombie
-echo %fightlootspider% strings from a spider
+echo Peleaste contra algunos monstruos con tu %swordtype% y obtuvistes:
+echo %fightlootskeleton% huesos de un esqueleto
+echo %fightlootzombie% carne podrida de un zombi
+echo %fightlootspider% hilo de un aracnido
 timeout /t 1 /nobreak >nul
-echo You also took %damage% damage
+echo Y tu vida a bajado %damage%
 set /a currenthealth=%health%-%damage%
-echo Your health is %currenthealth%
+echo Tu vida esta a %currenthealth%
 set /a health=%currenthealth%
 timeout /t 1 /nobreak >nul
 if %health% lss 1 (
     cls
     timeout /t 1 /nobreak >nul
-    echo ::  ::   ::::::  ::    ::     ::::::  :: ::::::: ::::::  
-    echo ::  ::  ::    :: ::    ::     ::   :: :: ::      ::   :: 
-    echo  ::::   ::    :: ::    ::     ::   :: :: :::::   ::   :: 
-    echo   ::    ::    :: ::    ::     ::   :: :: ::      ::   :: 
-    echo   ::     ::::::   ::::::      ::::::  :: ::::::: ::::::  
+    echo ::    ::   ::::::::   ::::::::       ::      ::   ::      ::   ::::::   ::::::   ::::::     ::::::
+    echo ::    ::   ::    ::   ::             ::::  ::::   ::      ::   ::       ::  ::     ::     ::      ::
+    echo ::::::::   ::::::::   ::::::::       ::  ::  ::   ::      ::   ::::::   ::::::     ::     ::      ::
+    echo ::    ::   ::    ::         ::       ::      ::   ::      ::   ::       ::  ::     ::     ::      ::
+    echo ::    ::   ::    ::   ::::::::       ::      ::     ::::::     ::::::   ::    ::   ::       ::::::
     timeout /t 3 /nobreak >nul
-    echo In this alpha version, nothing will change if you die and your health will be back to 20
+    echo En esta version Alpha, nada pasara si mueres y tu vida volvera a ser 20
     set /a health=20
 )
 if !health! lss 10 (
     if !health! gtr 0 (
-        choice /m "Heal yourself with an apple?"
+        choice /m "Curarte con una manzana?"
         if !errorlevel! equ 1 (
             set /a "currentallchoplootapple=!allchoplootapple!-1" && (
                 if defined currentallchoplootapple (
                     if !currentallchoplootapple! lss 0 (
                         set tempvar=1
-                        echo You don't have enough apples to heal yourself
+                        echo No tienes suficientes manzanas mara curarte
                         set /a "currentallchoplootapple=!allchoplootapple!+1" >nul
                         timeout /t 1 /nobreak >nul
-                        echo Press any key to continue
+                        echo Pulsa cualquier tecla para continuar
                         pause >nul
                     ) else (
                         set /a "allchoplootapple=!currentallchoplootapple!" >nul
                         set /a "currenthealth=!health!+4"
                         set /a "health=!currenthealth!"
-                        echo You health is now !health!
+                        echo Tu vida esta a !health!
                     )
                     cd "%~dp0"
                     cd "userinv"
@@ -164,7 +164,7 @@ if !health! lss 10 (
 if not !tempvar! equ 1 (
     set tempvar=
     timeout /t 2 /nobreak >nul
-    echo Press any key to continue
+    echo Pulsa cualquier tecla para continuar
     pause >nul
 )
 set /a currentallfightlootskeleton=%allfightlootskeleton%+%fightlootskeleton%
@@ -189,18 +189,18 @@ if %chop% equ 3 (
     set /a choplootapple=%random% %%9
 )
 cls
-echo Chopping.
+echo Talando.
 timeout /t 1 /nobreak >nul
 cls
-echo Chopping..
+echo Talando..
 timeout /t 1 /nobreak >nul
 cls
-echo Chopping...
+echo Talando...
 timeout /t 1 /nobreak >nul
 cls
-echo You chopped %choplootwood% Wood Planks and %choplootapple% Apples with your %axetype%.
+echo Has talado %choplootwood% Tablas de madera y %choplootapple% Manzanas con tu %axetype%.
 timeout /t 2 /nobreak >nul
-echo Press any key to continue
+echo Pulsa cualquier tecla para continuar
 pause >nul
 set /a currentallchoplootwood=%allchoplootwood%+%choplootwood%
 set /a currentallchoplootapple=%allchoplootapple%+%choplootapple%
